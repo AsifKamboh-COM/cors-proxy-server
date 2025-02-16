@@ -99,7 +99,7 @@ If you get the error:
 ```json
 {
   "status": "Failed to fetch URL",
-  "error": "Ensure the URL is public or correct."
+  "error": "Invalid URL"
 }
 ```
 ### ✅ **Possible Fixes:**
