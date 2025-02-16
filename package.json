@@ -7,7 +7,7 @@
     "start": "node server.js"
   },
   "keywords": ["cors", "proxy", "nodejs", "express"],
-  "author": "Your Name",
+  "author": "Asif Kamboh",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
