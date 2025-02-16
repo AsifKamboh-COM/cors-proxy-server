@@ -13,6 +13,7 @@ A simple **Node.js-based proxy server** that allows you to bypass CORS restricti
 - ✅ Fetches both **headers and HTML content** from the target URL
 - ✅ Supports **custom domains**
 - ✅ **Deployable on Render, GitHub, and other platforms**
+- ✅ Improved **error handling** and **redirection support**
 
 ---
 
@@ -61,6 +62,11 @@ Example:
 http://localhost:3000/proxy?url=https://example.com
 ```
 
+This will return:
+- **Response status** (e.g., HTTP/2 200 OK)
+- **Response headers** (all headers from the target URL)
+- **Full HTML content** of the requested page
+
 ---
 
 ## 🚀 **Deployment**
@@ -92,10 +98,14 @@ You can configure the following environment variables:
 If you get the error:
 ```json
 {
-  "error": "Failed to fetch URL: Ensure the URL is public or correct."
+  "status": "Failed to fetch URL",
+  "error": "Ensure the URL is public or correct."
 }
 ```
-Make sure the **target URL is publicly accessible**.
+### ✅ **Possible Fixes:**
+- Make sure the **target URL is publicly accessible**.
+- If the request is blocked due to **CORS**, try using different headers.
+- Some sites have **anti-bot protections**, which may cause failures.
 
 ---
 
