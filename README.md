@@ -26,11 +26,11 @@
 │-- README.md       # Documentation
 ```
 
-## 🛠 **Installation**
+## ![Install](https://img.shields.io/badge/Install-Now-brightgreen.svg) **Installation**
 
 ### 🔹 **Prerequisites**
-- **Node.js** (v16 or higher)
-- **Yarn or NPM**
+- Node.js (v16 or higher)
+- Yarn or NPM
 
 ### 🔹 **Clone the Repository**
 ```sh
