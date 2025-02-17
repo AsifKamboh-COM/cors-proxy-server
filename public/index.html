@@ -8,19 +8,29 @@
 </head>
 <body class="bg-gray-900 text-white flex flex-col items-center min-h-screen p-6">
 
-    <div class="w-full max-w-2xl bg-gray-800 p-6 rounded-lg shadow-lg text-center">
-        <h1 class="text-2xl font-bold mb-4">CORS Proxy Server</h1>
-        <input type="text" id="urlInput" placeholder="Enter URL to fetch"
-            class="w-full p-3 text-gray-800 rounded-md focus:ring focus:ring-blue-500">
-        <button onclick="fetchData()" class="mt-3 px-6 py-2 bg-blue-500 hover:bg-blue-600 rounded-md">Fetch</button>
+    <!-- Main container for the form -->
+    <div class="w-full max-w-xl bg-gray-800 p-8 rounded-lg shadow-lg text-center space-y-6">
+        <h1 class="text-3xl font-bold text-blue-400 mb-4">CORS Proxy Server</h1>
+        <p class="text-lg text-gray-400 mb-6">Enter a URL to fetch the response through the CORS proxy server.</p>
+
+        <!-- Input and button row -->
+        <div class="flex flex-col space-y-4">
+            <input type="text" id="urlInput" placeholder="Enter URL to fetch" 
+                class="w-full p-4 text-gray-800 rounded-md focus:ring focus:ring-blue-500 placeholder-gray-500 shadow-lg">
+            <button onclick="fetchData()" 
+                class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-md shadow-md transition-colors duration-300">
+                Fetch Data
+            </button>
+        </div>
     </div>
 
-    <div id="outputContainer" class="w-full max-w-2xl mt-6 hidden">
-        <h2 class="text-xl font-semibold mb-2">Response Headers</h2>
-        <pre id="headersOutput" class="bg-gray-800 text-green-400 p-4 rounded-md overflow-auto"></pre>
+    <!-- Output Section -->
+    <div id="outputContainer" class="w-full max-w-2xl mt-8 hidden bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold text-green-400 mb-4">Response Headers</h2>
+        <pre id="headersOutput" class="bg-gray-700 text-green-300 p-4 rounded-md overflow-auto"></pre>
 
-        <h2 class="text-xl font-semibold mt-4 mb-2">HTML Response</h2>
-        <pre id="htmlOutput" class="bg-gray-800 text-yellow-400 p-4 rounded-md overflow-auto"></pre>
+        <h2 class="text-xl font-semibold text-yellow-400 mt-6 mb-4">HTML Response</h2>
+        <pre id="htmlOutput" class="bg-gray-700 text-yellow-300 p-4 rounded-md overflow-auto"></pre>
     </div>
 
     <script>
