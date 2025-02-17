@@ -1,107 +1,110 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CORS Proxy</title>
+    <title>CORS Proxy Server</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white flex flex-col items-center min-h-screen p-6"><!-- Main container for the form -->
-<div class="w-full max-w-xl bg-gray-800 p-8 rounded-lg shadow-lg text-center space-y-6">
-    <h1 class="text-3xl font-bold text-blue-400 mb-4">CORS Proxy Server</h1>
-    <p class="text-lg text-gray-400 mb-6">Enter a URL to fetch the response through the CORS proxy server.</p>
+<body class="bg-gray-900 text-white flex flex-col items-center min-h-screen p-6">
 
-    <!-- Input and button row -->
-    <div class="flex flex-col space-y-4">
-        <input type="text" id="urlInput" placeholder="Enter URL to fetch" 
-            class="w-full p-4 text-gray-800 rounded-md focus:ring focus:ring-blue-500 placeholder-gray-500 shadow-lg">
-        
-        <button id="fetchButton" onclick="fetchData()" 
-            class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-md shadow-md transition-colors duration-300 flex items-center justify-center gap-2">
-            <svg id="spinner" class="hidden w-5 h-5 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-            <span id="buttonText">Fetch Data</span>
-        </button>
+    <!-- Main container for the form -->
+    <div class="w-full max-w-xl bg-gray-800 p-8 rounded-lg shadow-lg text-center space-y-6">
+        <h1 class="text-3xl font-bold text-blue-400 mb-4">CORS Proxy Server</h1>
+        <p class="text-lg text-gray-400 mb-6">Enter a URL to fetch the response through the CORS proxy server.</p>
 
-        <!-- Error message -->
-        <div id="errorMessage" class="hidden p-3 text-sm rounded-lg bg-red-900/50 text-red-300"></div>
-    </div>
-</div>
-
-<!-- Output Section -->
-<div id="outputContainer" class="w-full max-w-2xl mt-8 hidden bg-gray-800 p-6 rounded-lg shadow-lg space-y-6">
-    <div>
-        <h2 class="text-xl font-semibold text-green-400 mb-4">Response Headers</h2>
-        <pre id="headersOutput" class="bg-gray-700 text-green-300 p-4 rounded-md max-h-96 overflow-y-auto"></pre>
-    </div>
-
-    <div>
-        <h2 class="text-xl font-semibold text-yellow-400 mb-4">HTML Response</h2>
-        <pre id="htmlOutput" class="bg-gray-700 text-yellow-300 p-4 rounded-md max-h-96 overflow-y-auto"></pre>
-    </div>
-</div>
-
-<script>
-    async function fetchData() {
-        const url = document.getElementById('urlInput').value;
-        const errorMessage = document.getElementById('errorMessage');
-        const outputContainer = document.getElementById('outputContainer');
-        const headersOutput = document.getElementById('headersOutput');
-        const htmlOutput = document.getElementById('htmlOutput');
-        const button = document.getElementById('fetchButton');
-        const buttonText = document.getElementById('buttonText');
-        const spinner = document.getElementById('spinner');
-
-        // Reset states
-        errorMessage.classList.add('hidden');
-        outputContainer.classList.add('hidden');
-        button.disabled = true;
-        buttonText.classList.add('hidden'); // Hide button text
-        spinner.classList.remove('hidden');
-
-        if (!url) {
-            showError("Please enter a valid URL!");
-            resetButton();
-            return;
-        }
-
-        const proxyUrl = `/proxy?url=${encodeURIComponent(url)}`;
-
-        try {
-            const response = await fetch(proxyUrl);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        <!-- Input and button row -->
+        <div class="flex flex-col space-y-4">
+            <input type="text" id="urlInput" placeholder="Enter URL to fetch" 
+                class="w-full p-4 text-gray-800 rounded-md focus:ring focus:ring-blue-500 placeholder-gray-500 shadow-lg">
             
-            const data = await response.json();
-            if (data.length === 0) throw new Error("No data received");
+            <button id="fetchButton" onclick="fetchData()" 
+                class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-md shadow-md transition-colors duration-300 flex items-center justify-center gap-2">
+                <svg id="spinner" class="hidden w-5 h-5 text-white animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span id="buttonText">Fetch Data</span>
+            </button>
 
-            headersOutput.textContent = JSON.stringify(data[0].headers, null, 2);
-            htmlOutput.textContent = data[0].html;
-            outputContainer.classList.remove('hidden');
-        } catch (error) {
-            showError(error.message);
+            <!-- Error message -->
+            <div id="errorMessage" class="hidden p-3 text-sm rounded-lg bg-red-900/50 text-red-300"></div>
+        </div>
+    </div>
+
+    <!-- Output Section -->
+    <div id="outputContainer" class="w-full max-w-2xl mt-8 hidden bg-gray-800 p-6 rounded-lg shadow-lg space-y-6">
+        <div>
+            <h2 class="text-xl font-semibold text-green-400 mb-4">Response Headers</h2>
+            <pre id="headersOutput" class="bg-gray-700 text-green-300 p-4 rounded-md max-h-96 overflow-y-auto"></pre>
+        </div>
+
+        <div>
+            <h2 class="text-xl font-semibold text-yellow-400 mb-4">HTML Response</h2>
+            <pre id="htmlOutput" class="bg-gray-700 text-yellow-300 p-4 rounded-md max-h-96 overflow-y-auto"></pre>
+        </div>
+    </div>
+
+    <script>
+        async function fetchData() {
+            const url = document.getElementById('urlInput').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const outputContainer = document.getElementById('outputContainer');
+            const headersOutput = document.getElementById('headersOutput');
+            const htmlOutput = document.getElementById('htmlOutput');
+            const button = document.getElementById('fetchButton');
+            const buttonText = document.getElementById('buttonText');
+            const spinner = document.getElementById('spinner');
+
+            // Reset states
+            errorMessage.classList.add('hidden');
             outputContainer.classList.add('hidden');
-        } finally {
-            resetButton();
+            button.disabled = true;
+            buttonText.classList.add('hidden'); // Hide button text
+            spinner.classList.remove('hidden');
+
+            if (!url) {
+                showError("Please enter a valid URL!");
+                resetButton();
+                return;
+            }
+
+            const proxyUrl = `/proxy?url=${encodeURIComponent(url)}`;
+
+            try {
+                const response = await fetch(proxyUrl);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                
+                const data = await response.json();
+                if (data.length === 0) throw new Error("No data received");
+
+                headersOutput.textContent = JSON.stringify(data[0].headers, null, 2);
+                htmlOutput.textContent = data[0].html;
+                outputContainer.classList.remove('hidden');
+            } catch (error) {
+                showError(error.message);
+                outputContainer.classList.add('hidden');
+            } finally {
+                resetButton();
+            }
         }
-    }
 
-    function showError(message) {
-        const errorMessage = document.getElementById('errorMessage');
-        errorMessage.textContent = message;
-        errorMessage.classList.remove('hidden');
-    }
+        function showError(message) {
+            const errorMessage = document.getElementById('errorMessage');
+            errorMessage.textContent = message;
+            errorMessage.classList.remove('hidden');
+        }
 
-    function resetButton() {
-        const button = document.getElementById('fetchButton');
-        const buttonText = document.getElementById('buttonText');
-        const spinner = document.getElementById('spinner');
-        
-        button.disabled = false;
-        buttonText.classList.remove('hidden'); // Show button text again
-        spinner.classList.add('hidden');
-    }
-</script>
+        function resetButton() {
+            const button = document.getElementById('fetchButton');
+            const buttonText = document.getElementById('buttonText');
+            const spinner = document.getElementById('spinner');
+            
+            button.disabled = false;
+            buttonText.classList.remove('hidden'); // Show button text again
+            spinner.classList.add('hidden');
+        }
+    </script>
 
 </body>
 </html>
