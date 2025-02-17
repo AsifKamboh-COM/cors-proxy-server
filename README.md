@@ -114,7 +114,7 @@ To deploy this CORS Proxy Server on Vercel, follow these steps:
    ```
 6. **Deploy and get your Render URL!**
 
-## ![ENV Required](https://img.shields.io/badge/Environment%20Variables-Required-red.svg) **Environment Variables** (Optional)
+## ![ENV Optional](https://img.shields.io/badge/Environment%20Variables-Optional-1abc9c.svg) **Environment Variables** (Optional)
 You can configure the following environment variables:
 
 - `PORT` (default: `3000`)
@@ -135,5 +135,5 @@ If you get the error:
 ## ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg) **License**
 This project is licensed under the **MIT License**.
 
-## ![Author](https://img.shields.io/badge/Author-Asif%20Kamboh-blue.svg) **Built & Maintained By**
+## ![Built & Maintained By](https://img.shields.io/badge/Built%20and%20Maintained%20By-Asif%20Kamboh-blue.svg) **Built & Maintained By**
 **[Asif Kamboh](https://www.asifkamboh.com/)** – *Software Developer & Open-Source Contributor*
