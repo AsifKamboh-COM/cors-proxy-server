@@ -57,7 +57,7 @@ or
 npm start
 ```
 
-## 🌐 **Usage**
+## ![Easy to Use](https://img.shields.io/badge/Easy%20to%20Use-Yes-brightgreen.svg) **Usage**
 Once the server is running, you can use the proxy by making a request to:
 
 ```sh
@@ -74,7 +74,7 @@ This will return:
 - **Response headers** (all headers from the target URL)
 - **Full HTML content** of the requested page
 
-## 🚀 **Deployment**
+## ![Deployed](https://img.shields.io/badge/Deployed-Yes-brightgreen.svg) **Deployment**
 
 ### 🔹 **Deploy on Vercel**
 To deploy this CORS Proxy Server on Vercel, follow these steps:
@@ -114,7 +114,7 @@ To deploy this CORS Proxy Server on Vercel, follow these steps:
    ```
 6. **Deploy and get your Render URL!**
 
-## 🔧 **Environment Variables** (Optional)
+## ![ENV Required](https://img.shields.io/badge/Environment%20Variables-Required-red.svg) **Environment Variables** (Optional)
 You can configure the following environment variables:
 
 - `PORT` (default: `3000`)
