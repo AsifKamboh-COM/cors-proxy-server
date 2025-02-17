@@ -119,7 +119,7 @@ You can configure the following environment variables:
 
 - `PORT` (default: `3000`)
 
-## 🔴 **Error Handling**
+## ![Error Handling](https://img.shields.io/badge/Error%20Handling-Enabled-brightgreen.svg) **Error Handling**
 If you get the error:
 ```json
 {
@@ -127,14 +127,13 @@ If you get the error:
   "error": "Invalid URL"
 }
 ```
-### ✅ **Possible Fixes:**
+## ![Fixed](https://img.shields.io/badge/Fixed-Yes-brightgreen.svg) **Possible Fixes:**
 - Make sure the **target URL is publicly accessible**.
 - If the request is blocked due to **CORS**, try using different headers.
 - Some sites have **anti-bot protections**, which may cause failures.
 
-## 📜 **License**
+## ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg) **License**
 This project is licensed under the **MIT License**.
 
-## 💡 **Author**
-- Asif Kamboh
-- 🔗 Website: [asifkamboh.com](https://www.asifkamboh.com/)
+## ![Author](https://img.shields.io/badge/Author-Asif%20Kamboh-blue.svg) **Author**
+Asif Kamboh - [asifkamboh.com](https://www.asifkamboh.com/)
