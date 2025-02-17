@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORS Proxy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white flex flex-col items-center min-h-screen p-6">
+
+    <div class="w-full max-w-2xl bg-gray-800 p-6 rounded-lg shadow-lg text-center">
+        <h1 class="text-2xl font-bold mb-4">CORS Proxy Server</h1>
+        <input type="text" id="urlInput" placeholder="Enter URL to fetch"
+            class="w-full p-3 text-gray-800 rounded-md focus:ring focus:ring-blue-500">
+        <button onclick="fetchData()" class="mt-3 px-6 py-2 bg-blue-500 hover:bg-blue-600 rounded-md">Fetch</button>
+    </div>
+
+    <div id="outputContainer" class="w-full max-w-2xl mt-6 hidden">
+        <h2 class="text-xl font-semibold mb-2">Response Headers</h2>
+        <pre id="headersOutput" class="bg-gray-800 text-green-400 p-4 rounded-md overflow-auto"></pre>
+
+        <h2 class="text-xl font-semibold mt-4 mb-2">HTML Response</h2>
+        <pre id="htmlOutput" class="bg-gray-800 text-yellow-400 p-4 rounded-md overflow-auto"></pre>
+    </div>
+
+    <script>
+        async function fetchData() {
+            const url = document.getElementById('urlInput').value;
+            if (!url) {
+                alert("Please enter a valid URL!");
+                return;
+            }
+
+            const proxyUrl = `/proxy?url=${encodeURIComponent(url)}`;
+
+            try {
+                const response = await fetch(proxyUrl);
+                const data = await response.json();
+
+                if (data.length > 0) {
+                    document.getElementById('outputContainer').classList.remove('hidden');
+                    document.getElementById('headersOutput').textContent = JSON.stringify(data[0].headers, null, 2);
+                    document.getElementById('htmlOutput').textContent = data[0].html;
+                } else {
+                    document.getElementById('outputContainer').classList.add('hidden');
+                    alert("No data received.");
+                }
+            } catch (error) {
+                alert("Error fetching data: " + error.message);
+            }
+        }
+    </script>
+
+</body>
+</html>
