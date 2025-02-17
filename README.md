@@ -101,9 +101,9 @@ To deploy this CORS Proxy Server on Vercel, follow these steps:
    Follow the instructions to complete the deployment.
 
 ### 🔹 **Deploy on Render**
-1. **Push your code to GitHub**
-2. **Create a new Web Service on Render**
-3. **Connect your GitHub repository**
+1. Push your code to GitHub
+2. Create a new Web Service on Render
+3. Connect your GitHub repository
 4. Set the **build command**:
    ```sh
    yarn install
@@ -114,12 +114,12 @@ To deploy this CORS Proxy Server on Vercel, follow these steps:
    ```
 6. **Deploy and get your Render URL!**
 
-## 🔧 **Environment Variables (Optional)**
+## 🔧 **Environment Variables** (Optional)
 You can configure the following environment variables:
 
 - `PORT` (default: `3000`)
 
-## ❌ **Error Handling**
+## 🔴 **Error Handling**
 If you get the error:
 ```json
 {
@@ -135,10 +135,6 @@ If you get the error:
 ## 📜 **License**
 This project is licensed under the **MIT License**.
 
-## 👥 **Contributors**
-- **[Asif Kamboh](https://www.asifkamboh.com/)**  
-  For contributions, feel free to submit a **pull request**! 🎉
-
-## 🔗 **Repository Link**
-
-[GitHub Repository](https://github.com/AsifKamboh-COM/cors-proxy-server)
+## 💡 **Author**
+- Asif Kamboh
+- 🔗 Website: [asifkamboh.com](https://www.asifkamboh.com/)
