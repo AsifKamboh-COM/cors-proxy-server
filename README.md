@@ -135,5 +135,5 @@ If you get the error:
 ## ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg) **License**
 This project is licensed under the **MIT License**.
 
-## ![Author](https://img.shields.io/badge/Author-Asif%20Kamboh-blue.svg) **Author**
-Asif Kamboh - [asifkamboh.com](https://www.asifkamboh.com/)
+## ![Author](https://img.shields.io/badge/Author-Asif%20Kamboh-blue.svg) **Built & Maintained By**
+**[Asif Kamboh](https://www.asifkamboh.com/)** – *Software Developer & Open-Source Contributor*
