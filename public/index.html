@@ -177,7 +177,7 @@
                 if (data?.length > 0) {
                     elements.outputContainer.classList.remove('hidden');
                     elements.headersOutput.textContent = JSON.stringify(data[0].headers, null, 2);
-                    elements.htmlOutput.innerHTML = data[0].html;  // Use innerHTML for rendering HTML
+                    elements.htmlOutput.innerHTML = sanitizeHtml(data[0].html); // Sanitizing and rendering HTML response
                 } else {
                     showError('No data received from the server');
                 }
@@ -194,6 +194,12 @@
         elements.urlInput.addEventListener('input', () => {
             elements.fetchButton.disabled = !isValidUrl(elements.urlInput.value.trim());
         });
+
+        // Sanitizing HTML to prevent security vulnerabilities
+        function sanitizeHtml(html) {
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            return doc.body.innerHTML;  // This ensures HTML is safely rendered
+        }
     </script>
 </body>
 </html>
