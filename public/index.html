@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CORS Proxy Server</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Use JSON formatter for beautification -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonlint/1.6.0/jsonlint.min.js"></script>
 </head>
 <body class="bg-gray-900 text-white flex flex-col items-center min-h-screen p-6">
 
@@ -19,19 +17,14 @@
         <div class="flex flex-col space-y-4">
             <input type="text" id="urlInput" placeholder="Enter URL to fetch" 
                 class="w-full p-4 text-gray-800 rounded-md focus:ring focus:ring-blue-500 placeholder-gray-500 shadow-lg">
-            
-            <!-- Button with loading spinner -->
-            <button id="fetchButton" onclick="fetchData()" 
-                class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-md shadow-md transition-colors duration-300 relative">
-                <span id="buttonText">Fetch Data</span>
-                <svg id="loadingSpinner" class="w-5 h-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden animate-spin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" opacity=".25"/>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M4 12a8 8 0 0 1 8-8m0 0a8 8 0 0 0 8 8"/>
-                </svg>
+            <button onclick="fetchData()" 
+                class="px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-md shadow-md transition-colors duration-300">
+                Fetch Data
             </button>
 
-            <!-- Error message -->
+            <!-- Error and loading messages -->
             <div id="errorMessage" class="text-red-500 hidden mt-3"></div>
+            <div id="loadingMessage" class="text-yellow-500 hidden mt-3">Loading...</div>
         </div>
     </div>
 
@@ -41,31 +34,25 @@
         <pre id="headersOutput" class="bg-gray-700 text-green-300 p-4 rounded-md overflow-auto"></pre>
 
         <h2 class="text-xl font-semibold text-yellow-400 mt-6 mb-4">HTML Response</h2>
-        <pre id="htmlOutput" class="bg-gray-700 text-yellow-300 p-4 rounded-md overflow-auto max-h-80"></pre>
+        <pre id="htmlOutput" class="bg-gray-700 text-yellow-300 p-4 rounded-md overflow-auto"></pre>
     </div>
 
     <script>
         async function fetchData() {
             const url = document.getElementById('urlInput').value;
             const errorMessage = document.getElementById('errorMessage');
-            const loadingSpinner = document.getElementById('loadingSpinner');
-            const fetchButton = document.getElementById('fetchButton');
-            const buttonText = document.getElementById('buttonText');
+            const loadingMessage = document.getElementById('loadingMessage');
             const outputContainer = document.getElementById('outputContainer');
             const headersOutput = document.getElementById('headersOutput');
             const htmlOutput = document.getElementById('htmlOutput');
 
             // Hide previous error and output
             errorMessage.classList.add('hidden');
-            loadingSpinner.classList.remove('hidden');
-            buttonText.textContent = "Loading...";
-            fetchButton.disabled = true;
+            loadingMessage.classList.remove('hidden');
             outputContainer.classList.add('hidden');
             
             if (!url) {
-                loadingSpinner.classList.add('hidden');
-                buttonText.textContent = "Fetch Data";
-                fetchButton.disabled = false;
+                loadingMessage.classList.add('hidden');
                 errorMessage.textContent = "Please enter a valid URL!";
                 errorMessage.classList.remove('hidden');
                 return;
@@ -78,26 +65,19 @@
                 const data = await response.json();
 
                 // Hide loading and handle data display
-                loadingSpinner.classList.add('hidden');
-                buttonText.textContent = "Fetch Data";
-                fetchButton.disabled = false;
+                loadingMessage.classList.add('hidden');
 
                 if (data.length > 0) {
                     outputContainer.classList.remove('hidden');
                     headersOutput.textContent = JSON.stringify(data[0].headers, null, 2);
-                    
-                    // Beautify the HTML response and show it
-                    const beautifiedHtml = JSON.stringify(JSON.parse(data[0].html), null, 2);
-                    htmlOutput.textContent = beautifiedHtml;
+                    htmlOutput.textContent = data[0].html;
                 } else {
                     outputContainer.classList.add('hidden');
                     errorMessage.textContent = "No data received.";
                     errorMessage.classList.remove('hidden');
                 }
             } catch (error) {
-                loadingSpinner.classList.add('hidden');
-                buttonText.textContent = "Fetch Data";
-                fetchButton.disabled = false;
+                loadingMessage.classList.add('hidden');
                 errorMessage.textContent = "Error fetching data: " + error.message;
                 errorMessage.classList.remove('hidden');
             }
