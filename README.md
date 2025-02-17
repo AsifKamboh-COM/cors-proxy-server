@@ -4,7 +4,10 @@
 
 # 📌 **CORS Proxy Server**
 
-![CORS Proxy Server](https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZGtfulXDMwBL20k10oN28JMSjXJeIFsT6D08t4oeMIeNxhBldH8B2kgudEK7GjoJFvj811gGfy4MiObMejJDSAXMMKh3XmuSj57iXSBtKwXnzsEzS_Rvn9F0kgnx8Lsd0S6-bblHiiHKCbSmNRH4xJ3VQ6lzQEqKJdnNpv09IwyZTTf6MaCqBTjVvrJUZ/s1600/cors_proxy_server.png)
+<p align="center">
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgZGtfulXDMwBL20k10oN28JMSjXJeIFsT6D08t4oeMIeNxhBldH8B2kgudEK7GjoJFvj811gGfy4MiObMejJDSAXMMKh3XmuSj57iXSBtKwXnzsEzS_Rvn9F0kgnx8Lsd0S6-bblHiiHKCbSmNRH4xJ3VQ6lzQEqKJdnNpv09IwyZTTf6MaCqBTjVvrJUZ/s1600/cors_proxy_server.png" alt="CORS Proxy Server" />
+</p>
+
 
 **CORS Proxy Server** is a simple and efficient proxy server built with **Node.js** and **Express.js** to fetch headers and HTML content from any URL, bypassing CORS restrictions. It comes with a user-friendly front-end interface. **[Live Demo](https://cors.asifkamboh.com/)**
 
