@@ -1,6 +1,6 @@
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)  
-![Maintained YES](https://img.shields.io/badge/Maintained%3F-yes-green.svg)  
-![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)  
+![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)  
+![Maintained YES](https://img.shields.io/badge/Maintained-Yes-green.svg)  
+![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-Anything-1abc9c.svg)  
 
 # 📌 **CORS Proxy Server**
 
