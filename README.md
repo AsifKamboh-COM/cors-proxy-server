@@ -24,7 +24,7 @@
 │-- package.json    # Dependencies and scripts
 │-- vercel.json     # Vercel deployment configuration
 │-- README.md       # Documentation
-│-- LICENSE.        # License
+│-- LICENSE         # License
 ```
 
 ## ![Install](https://img.shields.io/badge/Install-Now-brightgreen.svg) **Installation**
