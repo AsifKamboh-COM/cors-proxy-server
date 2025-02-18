@@ -136,4 +136,4 @@ If you get the error:
 This project is licensed under the **MIT License**.
 
 ## ![Built & Maintained By](https://img.shields.io/badge/Built%20and%20Maintained%20By-Asif%20Kamboh-blue.svg) **Built & Maintained By**
-**[Asif Kamboh](https://www.asifkamboh.com/)** – *Software Developer & Open-Source Contributor*
+**[Asif Kamboh](https://www.asifkamboh.com/)** – *Developer & Open-Source Contributor*
